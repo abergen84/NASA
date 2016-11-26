@@ -2,6 +2,8 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const renderFile = require('ejs').renderFile
 const app = express()
+// const cors = require('cors')
+
 
 const theRoot = __dirname + '/dist/',
 	PORT = process.env.PORT || 3000 
@@ -18,6 +20,14 @@ app.use( express.static( __dirname + '/dist/assets') );
 
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded() );
+
+// app.use(cors())
+// app.all('*', function(req, res, next) {
+//        res.header("Access-Control-Allow-Origin", "*");
+//        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//        res.header('Access-Control-Allow-Headers', 'Content-Type');
+//        next();
+// });
 
 app.post('/auth/register', function(req, res){
   console.log(req.body)
